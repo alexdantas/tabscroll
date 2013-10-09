@@ -1,20 +1,20 @@
-# tless - Neat guitar tab scroller.
+# tabscroll - Neat guitar tab scroller.
 
-`tless` is a (Ruby-powered) guitar tab scroller on the terminal.
+`tabscroll` is a (Ruby-powered) guitar tab scroller on the terminal.
 
 It supports forward and backwards auto-scrolling and currently
 reads a nice range of guitar tabs.
 
 ## Usage and Screenshots
 
-`$ tless my-guitar-tab.txt`
+`$ tabscroll my-guitar-tab.txt`
 
  <!-- screenshot -->
 
 ## Guitar tab file format
 
 Don't worry about it. Ideally you'd send a guitar tab independently of the
-format and `tless` would be smart enough to know how to display it.
+format and `tabscroll` would be smart enough to know how to display it.
 
 But for now it requires you to split each tab row with a blank line. For
 example, this would work:
@@ -53,9 +53,9 @@ But this wouldn't:
 
 ## Credits and contact
 
-`tless` was created by Alexandre Dantas. Do visit my
+`tabscroll` was created by Alexandre Dantas. Do visit my
 [homepage](http://www.alexdantas.net) and
 [blog](http://www.alexdantas.net/projects).
 
-`tless` also has a page: http://www.alexdantas.net/projects/tless
+`tabscroll` also has a page: http://www.alexdantas.net/projects/tabscroll
 

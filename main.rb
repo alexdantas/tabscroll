@@ -8,7 +8,7 @@ require_relative 'track.rb'
 require_relative 'popup.rb'
 
 $engine = nil
-PROGRAM_NAME    = "tless"
+PROGRAM_NAME    = "tabscroll"
 PROGRAM_VERSION = "0.4"
 
 # Terminates program's execution normally, finishing the engine.
