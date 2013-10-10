@@ -1,7 +1,9 @@
 
 require 'curses'
 
-# An interface with Curses.
+# The main interface with Curses.
+#
+# This acts as a middleman, abstracting away curses' details.
 class Engine
 
   # All possible colors.

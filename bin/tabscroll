@@ -1,40 +1,9 @@
+#!/usr/bin/env ruby
 #
-#
-#
+# The main `tabscroll` executable
 
-require_relative 'engine.rb'
-require_relative 'screen.rb'
-require_relative 'track.rb'
-require_relative 'popup.rb'
+require 'tabscroll'
 
-$engine = nil
-PROGRAM_NAME    = "tabscroll"
-PROGRAM_VERSION = "0.4"
-
-# Terminates program's execution normally, finishing the engine.
-def quit
-  $engine.exit
-  exit 0
-end
-
-# Displays a help window, waiting for a keypress.
-def show_help_window
-  title = 'Help'
-  text  = <<END_OF_TEXT
-      q quit
-      h help/go back
-   left auto-scroll left
-  right auto-scroll right
-up/down stop auto-scrolling
-      o toggle status/title bars
-END_OF_TEXT
-
-  pop = Popup.new(title, text)
-  will_quit = pop.show
-  quit if will_quit
-end
-
-# "Let the rock off begin!"
 begin
   filename = ARGV[0]
   if not filename
@@ -74,6 +43,10 @@ begin
     when 'o'
       bars_hidden = (bars_hidden ? false : true)
       Curses::clear
+    when '<'
+      track.scroll -5
+    when '>'
+      track.scroll 5
     when Curses::KEY_LEFT
       track.speed -= 1
     when Curses::KEY_RIGHT

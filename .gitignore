@@ -1,3 +1,5 @@
 # Guitar tabs on my current directory
 *.txt
 
+# The final gem
+*.gem
