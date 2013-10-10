@@ -7,6 +7,6 @@ task :build do
 end
 
 task :release => :build do
-  system "gem push tabscroll-#{TabScroll::VERSION}"
+  system "gem push tabscroll-#{TabScroll::VERSION}.gem"
 end
 

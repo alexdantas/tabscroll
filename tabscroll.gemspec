@@ -1,10 +1,11 @@
 # My awesome specification
 
+require './lib/tabscroll'
 require 'date'
 
 Gem::Specification.new do |s|
-  s.name        = 'tabscroll'
-  s.version     = '1.0.1'
+  s.name        = TabScroll::NAME
+  s.version     = TabScroll::VERSION
   s.summary     = "Guitar tab scroller on the terminal"
   s.date        = "#{Date.today.year}-#{Date.today.month}-#{Date.today.day}"
   s.description = <<END_OF_DESCRIPTION
