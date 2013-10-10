@@ -1,6 +1,6 @@
 
 require 'optparse'
-require_relative '../tabscroll'
+require 'tabscroll'
 
 # Global configurations of the program, along with a commandline
 # argument parser.
@@ -19,7 +19,7 @@ class Settings
   def parse args
 
     opts = OptionParser.new do |parser|
-      parser.banner = "Usage: #{TabScroll::NAME} [options] filename"
+      parser.banner = "Usage: tabscroll [options] filename"
 
       # Make output beautiful
       parser.separator ""
@@ -31,7 +31,7 @@ class Settings
       end
 
       parser.on_tail("--version", "Show version") do
-        puts "#{TabScroll::NAME} v#{TabScroll::VERSION}"
+        puts "tabscroll v#{TabScroll::VERSION}"
         exit
       end
     end

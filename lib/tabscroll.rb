@@ -1,22 +1,17 @@
 # The main executable file.
 
-require_relative 'tabscroll/engine'
-require_relative 'tabscroll/screen'
-require_relative 'tabscroll/track'
-require_relative 'tabscroll/popup'
+require 'tabscroll/engine'
+require 'tabscroll/screen'
+require 'tabscroll/track'
+require 'tabscroll/popup'
+require 'tabscroll/version'
 
 # The main program.
 #
 # Note that we expect a global hash `$settings`.
 # It contains settings from the commandline argument parser
 # (Settings class).
-class TabScroll
-
-  # Program's name.
-  NAME = 'tabscroll'
-
-  # Current version of the program.
-  VERSION = '1.0.1'
+module TabScroll
 
   # Executes the whole program, loading contents in `filename`.
   def self.run filename
@@ -73,7 +68,7 @@ class TabScroll
         titlebar.mvaddstr(0, 0, "#{filename} (#{track.percent_completed}%) ", Engine::Colors[:cyan])
         titlebar.mvaddstr_right(0, "  Speed: #{track.speed}", Engine::Colors[:cyan])
 
-        statusbar.mvaddstr_left(0, "#{NAME} v#{VERSION} - press `h` for help", Engine::Colors[:green])
+        statusbar.mvaddstr_left(0, "tabscroll v#{VERSION} - press `h` for help", Engine::Colors[:green])
       end
     end
 
@@ -93,7 +88,7 @@ left/right  auto-scroll left/right
          o  toggle status/title bars
 
 
-#{NAME} v#{VERSION}
+tabscroll v#{VERSION}
 homepage  alexdantas.net/projects/tabscroll
 author    Alexandre Dantas <eu@alexdantas.net>
 END_OF_TEXT

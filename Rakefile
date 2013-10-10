@@ -1,6 +1,8 @@
-# My awesome Rakefile
+# Adding lib directory to load path
+lib = File.expand_path('../lib', __FILE__)
+$:.unshift lib unless $:.include? lib
 
-require_relative 'lib/tabscroll'
+require 'tabscroll/version'
 
 task :build do
   system 'gem build tabscroll.gemspec'

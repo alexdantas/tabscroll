@@ -1,10 +1,12 @@
-# My awesome specification
+# Adding lib directory to load path
+lib = File.expand_path('../lib', __FILE__)
+$:.unshift lib unless $:.include? lib
 
-require './lib/tabscroll'
+require 'tabscroll/version'
 require 'date'
 
 Gem::Specification.new do |s|
-  s.name        = TabScroll::NAME
+  s.name        = 'tabscroll'
   s.version     = TabScroll::VERSION
   s.summary     = "Guitar tab scroller on the terminal"
   s.date        = "#{Date.today.year}-#{Date.today.month}-#{Date.today.day}"
@@ -17,12 +19,14 @@ END_OF_DESCRIPTION
   s.email       = ["eu@alexdantas.net"]
   s.homepage    = 'http://www.alexdantas.net/projects/tabscroll'
   s.license     = "GPL-3.0"
-  s.executables << 'tabscroll'
-  s.require_path = 'lib'
 
-  # Including everything under `bin` and `lib`
-  s.files = Dir.glob("{bin, lib}/**/*") + %w{LICENSE README.md CHANGELOG.md}
+  # Including everything that's on `git`
+  s.files       = `git ls-files`.split($/)
+  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.require_paths = ['lib']
 
   s.metadata = { 'github' => 'http://www.github.com/alexdantas/tabscroll' }
+
+  s.add_development_dependency "rake"
 end
 

@@ -1,6 +1,6 @@
 
-require_relative 'screen.rb'
-require_relative 'timer.rb'
+require 'tabscroll/screen'
+require 'tabscroll/timer'
 
 # A full guitar tab, as shown on the screen.
 # Note that it depends on an already-existing window to exist.

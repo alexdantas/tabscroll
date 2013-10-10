@@ -1,5 +1,5 @@
 
-require_relative 'screen.rb'
+require 'tabscroll/screen'
 
 # A simple centralized popup on the terminal.
 class Popup < Screen

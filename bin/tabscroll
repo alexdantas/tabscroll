@@ -3,8 +3,8 @@
 # The main `tabscroll` executable
 
 # Is this considered ugly?
-require_relative '../lib/tabscroll'
-require_relative '../lib/tabscroll/settings'
+require 'tabscroll'
+require 'tabscroll/settings'
 
 # class TabScroll expects this hash, watch out!
 $settings = {}

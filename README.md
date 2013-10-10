@@ -1,5 +1,8 @@
 # tabscroll - Neat guitar tab scroller.
 
+<!-- gem badge (ignore this if you're in text mode) -->
+[![Gem Version](https://badge.fury.io/rb/tabscroll.png)](http://badge.fury.io/rb/tabscroll)
+
 `tabscroll` is a (Ruby-powered) guitar tab scroller on the terminal.
 
 It supports forward and backwards auto-scrolling and currently
