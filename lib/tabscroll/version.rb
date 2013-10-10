@@ -1,3 +1,3 @@
 module TabScroll
-  VERSION = '1.0.4'
+  VERSION = '1.0.40'
 end

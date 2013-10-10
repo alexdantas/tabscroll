@@ -1,6 +1,6 @@
 <!-- My awesome changelog -->
 
-## 1.0.4 (Oct 10, 2013)
+## 1.0.40 (Oct 10, 2013)
 
 BUG FIXES:
 
