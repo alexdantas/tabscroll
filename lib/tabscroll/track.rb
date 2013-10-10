@@ -6,7 +6,12 @@ require_relative 'timer.rb'
 # Note that it depends on an already-existing window to exist.
 #
 class Track
+
+  # Any line on the file that starts with this char is completely
+  # ignored when processed.
+  # Useful for making use of tabs we currently can't parse.
   COMMENT_CHAR = '#'
+
   attr_reader :screen, :percent_completed
   attr_accessor :speed
 
@@ -115,7 +120,7 @@ class Track
     #
     # Also, if we have only 5 tracks, we leave the sixth
     # indicator out of the screen.
-    if not @raw_track[6] =~ /[:blank:]/
+    if @raw_track.last =~ /^ *$/
       @screen.mvaddstr(0, y,     "E" + (' ' * (@screen.width - 1)))
       @screen.mvaddstr(0, y + 1, "B" + (' ' * (@screen.width - 1)))
       @screen.mvaddstr(0, y + 2, "G" + (' ' * (@screen.width - 1)))

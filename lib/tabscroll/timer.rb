@@ -9,6 +9,7 @@
 #
 class Timer
 
+  # Creates the timer, doing nothing else.
   def initialize
     @is_running = false
     @is_paused  = false
@@ -84,6 +85,5 @@ class Timer
 
     "#{min}:#{sec}:#{msec}"
   end
-
 end
 

@@ -1,11 +1,13 @@
 
 require_relative 'screen.rb'
 
-# A simple centralized popup.
-#
-# It resizes as you place the text on it.
+# A simple centralized popup on the terminal.
 class Popup < Screen
 
+  # Creates a Popup with `title` and inner `text`.
+  #
+  # It resizes to contain the whole text plus a 1x1 border
+  # around itself.
   def initialize(title, text)
     @title = title
     @text = []
@@ -40,6 +42,8 @@ class Popup < Screen
     end
   end
 
+  # Makes the Popup appear on the screen and wait for any key.
+  # When it exits, clears the screen erasing itself.
   def show
     finished = false
     while not finished

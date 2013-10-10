@@ -58,6 +58,10 @@ So if something bad happens and the program crashes, edit the tab making sure to
 keep a consistent tab format (6 in 6 lines, or 5 in 5) each with a blank line
 inbetween.
 
+At worse, please comment (add `#` at the start of) any line that's not the tab
+(you know, author info, instructions, etc). Sorry for the inconvenience, I plan
+to improve a lot the detection of tabs on the future.
+
 ## Contact
 
 Hi, I'm Alexandre Dantas! Thanks for having interest in this project. Please

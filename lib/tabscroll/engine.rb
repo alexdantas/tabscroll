@@ -3,7 +3,7 @@ require 'curses'
 
 # The main interface with Curses.
 #
-# This acts as a middleman, abstracting away curses' details.
+# This acts as a middleman, abstracting away Curses' details.
 class Engine
 
   # All possible colors.
