@@ -13,11 +13,18 @@ require 'tabscroll/version'
 # (Settings class).
 module TabScroll
 
-  # Executes the whole program, loading contents in `filename`.
+  # Starts the Curses engine and parses `filename`, finally
+  # displaying things onscreen.
   def self.run filename
+
+    if not File.exists? filename
+      puts "Error: File '#{filename}' doesn't exist."
+      exit 69
+    end
+
     @engine = Engine.new
     if not @engine
-      puts 'Failed to start curses!'
+      puts "Error: Failed to start Curses!"
       exit 1337
     end
     @engine.timeout 10
@@ -48,24 +55,24 @@ module TabScroll
         bars_hidden = (bars_hidden ? false : true)
         Curses::clear
       when '<'
-        track.scroll -5
+        track.scroll -10
       when '>'
-        track.scroll 5
+        track.scroll 10
       when Curses::KEY_LEFT
         track.speed -= 1
       when Curses::KEY_RIGHT
         track.speed += 1
-      when Curses::KEY_DOWN, Curses::KEY_UP
+      when Curses::KEY_DOWN, Curses::KEY_UP, ' '
         track.speed = 0
       when 'q'
-        $enigne.exit
-        return nil
+        @engine.exit
+        exit
       end
 
       track.update
       track.show
       if not bars_hidden
-        titlebar.mvaddstr(0, 0, "#{filename} (#{track.percent_completed}%) ", Engine::Colors[:cyan])
+        titlebar.mvaddstr(0, 0, "#{File.basename filename} (#{track.percent_completed}%) ", Engine::Colors[:cyan])
         titlebar.mvaddstr_right(0, "  Speed: #{track.speed}", Engine::Colors[:cyan])
 
         statusbar.mvaddstr_left(0, "tabscroll v#{VERSION} - press `h` for help", Engine::Colors[:green])
@@ -80,22 +87,26 @@ module TabScroll
   def self.show_help_window
     title = 'Help'
     text  = <<END_OF_TEXT
-         q  quit
-         h  help/go back
-left/right  auto-scroll left/right
-   up/down  stop auto-scrolling
-       </>  step scroll left/right
-         o  toggle status/title bars
+                  q  quit
+                  h  help/go back
+         left/right  auto-scroll left/right
+  up/down/space bar  stop auto-scrolling
+                </>  step scroll left/right
+                  o  toggle status/title bars
 
+        _|_  _. |_   _  _ ._ _  | |
+         |_ (_| |_) _> (_ | (_) | | #{VERSION}
 
-tabscroll v#{VERSION}
-homepage  alexdantas.net/projects/tabscroll
-author    Alexandre Dantas <eu@alexdantas.net>
+ homepage alexdantas.net/projects/tabscroll
+   author Alexandre Dantas <eu@alexdantas.net>
 END_OF_TEXT
 
     pop = Popup.new(title, text)
     will_quit = pop.show
-    quit if will_quit
+    if will_quit
+      @engine.exit
+      exit
+    end
   end
 end
 

@@ -13,6 +13,13 @@ begin
   $settings = Settings.new
   $settings.parse ARGV
 
-  TabScroll::run $settings[:filename]
+ # We'll provide a sample file so the user can test the program
+  if $settings[:run_sample_file]
+    filename = $settings[:sample_filename]
+  else
+    filename = $settings[:filename]
+  end
+
+  TabScroll::run filename
 end
 

@@ -59,8 +59,11 @@ class Track
     # I will also make every line have the same width
     # as of the biggest one.
 
-    # Any tab line MUST have EITHER ---1---9--| OR |---3----0
-    tab_line = /[-[:alnum:]]\||\|[-[:alnum:]]/
+    # Any tab line MUST have EITHER:
+    # ---1---9--|
+    # or
+    # |---3----0
+    tab_line = /[-[:alnum:]*]\||\|[-[:alnum:]*]/
 
     # Duration of each note only has those chars.
     # So we look for anything BUT these chars.

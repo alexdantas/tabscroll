@@ -12,6 +12,21 @@ class Settings
   def initialize
     @settings = {}
     @settings[:filename] = nil
+
+    # We have a way to test the program.
+    # We're distributing a sample tab file with the Gem so
+    # when users run `tabscroll --sample` they can see
+    # how the program works.
+    # This setting enables it
+    @settings[:run_sample_file] = false
+
+    # And this is the absolute filename of the file
+    # distributed with the gem.
+    # It'll be `../../sample_tab.txt` based on `settings.rb` path.
+    filename = File.expand_path("../../", __FILE__)
+    filename = File.dirname filename
+    filename += "/sample_tab.txt"
+    @settings[:sample_filename] = filename
   end
 
   # Sets options based on commandline arguments `args`.
@@ -23,8 +38,13 @@ class Settings
 
       # Make output beautiful
       parser.separator ""
-      parser.separator "Specific options:"
+      parser.separator "Options:"
 
+      parser.on("--sample", "Run `tabscroll` with sample file") do
+        @settings[:run_sample_file] = true
+      end
+
+      # These options appear if no other is given.
       parser.on_tail("-h", "--help", "Show this message") do
         puts parser
         exit
@@ -37,7 +57,7 @@ class Settings
     end
     opts.parse! args
 
-    # After parsing all '--args' and '-a' we will check if
+    # After parsing all dashed arguments we will check if
     # the user has provided a filename.
     #
     # The first argument without a leading '-' will be
@@ -49,7 +69,7 @@ class Settings
       end
     end
 
-    if not @settings[:filename]
+    if not @settings[:filename] and not @settings[:run_sample_file]
       puts opts
       exit 666
     end
