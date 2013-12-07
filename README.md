@@ -12,11 +12,9 @@ reads a nice range of guitar tabs.
 
     $ tabscroll my-guitar-tab.txt
 
-Running on a small terminal
-![big screen](http://www.alexdantas.net/projects/tabscroll/screenshots/screen1.png "Small Screen")
+![big screen](http://www.alexdantas.net/projects/tabscroll/images/small.png)
 
-The help window on a big screen
-![big screen](http://www.alexdantas.net/projects/tabscroll/screenshots/screen2.png "Big Screen")
+![big screen](http://www.alexdantas.net/projects/tabscroll/images/help.png)
 
 ## Guitar tab file format and troubleshooting
 

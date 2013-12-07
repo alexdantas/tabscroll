@@ -1,4 +1,4 @@
-# Adding lib directory to load path
+# Adding ./lib directory to load path
 lib = File.expand_path('../lib', __FILE__)
 $:.unshift lib unless $:.include? lib
 
@@ -20,7 +20,7 @@ END_OF_DESCRIPTION
   s.homepage    = 'http://www.alexdantas.net/projects/tabscroll'
   s.license     = "GPL-3.0"
 
-  # Including everything that's on `git`
+  # Including everything that's checked out on git
   s.files       = `git ls-files`.split($/)
   s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = ['lib']
